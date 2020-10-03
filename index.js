@@ -15,21 +15,21 @@ app.use(expressSanitizer())
 /**
  * Modelos
  */
-const Producto = mongoose.model('Kitten', new mongoose.Schema({
+const Product = mongoose.model('Product', new mongoose.Schema({
     name: String
 }));
 
 /**
  * Controladores
  */
-app.get('/',function(req, res){
+app.get('/',async function(req, res){
     res.json({
         success:true
     })
     res.status(200);
 });
 
-app.post('/',function(req,res){
+app.post('/',async function(req,res){
     res.json({
         success:true,
         input: req.body
@@ -38,7 +38,7 @@ app.post('/',function(req,res){
 });
 
 
-app.put('/',function(req,res){
+app.put('/',async function(req,res){
     res.json({
         success:true
     })
@@ -46,7 +46,7 @@ app.put('/',function(req,res){
 });
 
 
-app.delete('/',function(req,res){
+app.delete('/',async function(req,res){
     res.json({
         success:true
     })
