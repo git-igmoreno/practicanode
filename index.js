@@ -44,7 +44,11 @@ app.delete('/',function(req,res){
 });
 
 
+const puerto = 3000;
+var server = app.listen(puerto,function() {
 
-var server = app.listen(3000,function() {});
+    console.log("Servidor iniciado en " + puerto)
+
+});
 
 
