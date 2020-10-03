@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/git-igmoreno/practicanode/issues"
   },
-  "homepage": "https://github.com/git-igmoreno/practicanode#readme"
+  "homepage": "https://github.com/git-igmoreno/practicanode#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
