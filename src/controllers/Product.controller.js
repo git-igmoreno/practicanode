@@ -9,13 +9,31 @@ const Product = require('../models/Product.model');
 
 
 router.get('/product',async function(req, res){
-    const products = await Product.find({});
+   
+    const query = {};
+
+    if (req.query._id ) {
+        query['_id'] = {
+            $eq: req.query._id 
+        }
+    }
+  
+    if (req.query.categories ) {
+        query['category'] = {
+            $in: req.query.categories.split(",")
+        }
+    }
+    
+
+    const products = await Product.find(query);
+
     res.json(products)
     res.status(200);
 });
 
-router.get('/product/:productId',async function(req, res){
+router.get('/product/:productId',async function(req, res, next){
 
+   try {
     const productId = req.params.productId;
     const product = await Product.findOne({_id: productId});
 
@@ -31,6 +49,9 @@ router.get('/product/:productId',async function(req, res){
 
     res.json(product);
     res.status(200);
+   } catch (err) {
+    return next(err);
+   }
 });
 
 
