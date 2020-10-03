@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false, limit: '200mb' }))
 app.use(expressSanitizer())
 
 
-app.get('/',function(req,res){
+app.get('/',function(req, res){
     res.json({
         success:true
     })
@@ -44,8 +44,10 @@ app.delete('/',function(req,res){
 });
 
 
+
+
 const puerto = 3000;
-var server = app.listen(puerto,function() {
+var server = app.listen(puerto, function() {
 
     console.log("Servidor iniciado en " + puerto)
 
