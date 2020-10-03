@@ -7,17 +7,14 @@ const bodyParser = require('body-parser');
 const cookieparser = require('cookie-parser');
 const expressSanitizer = require('express-sanitizer');
 
+const productRoutes = require('./src/controllers/Product.controller');
+
 app.use(cookieparser())
 app.use(bodyParser.json({ limit: '200mb' }))
 app.use(bodyParser.urlencoded({ extended: false, limit: '200mb' }))
 app.use(expressSanitizer())
 
-/**
- * Modelos
- */
-const Product = mongoose.model('Product', new mongoose.Schema({
-    name: String
-}));
+
 
 /**
  * Controladores
@@ -52,6 +49,9 @@ app.delete('/',async function(req,res){
     })
     res.status(200);
 });
+
+
+app.use('/', productRoutes);
 
 const puerto = 3000;
 mongoose.connect('mongodb+srv://root:ycyeWmjZbJrnhmLf@cluster0.mibrz.mongodb.net/practicanode?retryWrites=true&w=majority', {useNewUrlParser: true}, (err) => {
